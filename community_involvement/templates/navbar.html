@@ -1,0 +1,26 @@
+<nav class="navbar">
+    <div class="navbar-menu-logo">
+        <img class="navbar-menu-btn" src="/static/img/menu.png" alt="">
+    </div>
+    <div class="navbar-links">
+        {% if url == 'home' %}
+            <a href="{% url 'home' %}" style="font-weight: bolder;">Home</a>
+        {% else %}
+            <a href="{% url 'home' %}">Home</a>
+        {% endif %}
+
+        
+        {% if url == 'programs' %}
+            <a href="{% url 'programs' %}" style="font-weight: bolder;">Events</a>
+        {% else %}
+            <a href="{% url 'programs' %}">Events</a>
+        {% endif %}
+
+        {% if url == 'projects' %}
+            <a href="{% url 'projects' %}" style="font-weight: bolder;">Projects</a>
+        {% else %}
+            <a href="{% url 'projects' %}">Projects</a>
+        {% endif %}
+
+    </div>
+</nav>
