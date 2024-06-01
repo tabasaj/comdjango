@@ -1,0 +1,86 @@
+<div>
+    <div class="btn-align">
+        <button value="{{ project.title }}" class="show-donate">Donate</button>
+
+    </div>
+    <div class="donate-popup none">
+
+        <div class="donation" action="{% url 'projects' %}" method="POST">
+            <div class="close-popup">
+                <i class="fa-solid fa-circle-xmark close"></i>
+            </div>
+            <h4 style="text-align: center;">Mode of Donation</h4>
+            <div class="mode">
+                <div class="flex">
+                    <input type="radio" name="mode" value="mode1" id="mode" checked="checked">
+                    <label for="">GCash</label>
+                </div>
+                <div class="flex">
+                    <input type="radio" name="mode" value="mode2" id="mode">
+                    <label for="">PayMaya</label>
+                </div>
+                <div class="flex">
+                    <input type="radio" name="mode" value="mode3" id="mode">
+                    <label for="">Credit Card</label>
+                </div>
+            </div>
+
+            <!-- GCash (Mode1) -->
+            <div>
+                <div class="gcash">
+
+                    <form class="mode1" action="{% url 'gcash-mode' %}" method="POST">
+                        {% csrf_token %}
+                        <h1>Gcash Details</h1>
+                        <input class="title" name="title" type="hidden" value="">
+                        <input name="name" type="text" placeholder="Enter Name">
+                        <input name="gcash_number" type="number" placeholder="Enter GCash Number">
+                        <input name="amount" type="number" placeholder="Enter Amount">
+                        <button type="submit">Submit</button>
+                        <!-- <a href="#gcash" class="nextGcash">Next</a> -->
+                    </form>
+
+                </div>
+                <div id="gcash" class="gcash-img">
+                    <img src="/static/community_involvement/img/ctu-logo.png" alt="">
+                </div>
+                <!-- <br>
+                <p>or</p>
+                <br>
+                <img style="width: 5rem; z-index: 1000" src="/static/img/ctu-logo.png" alt=""> -->
+            </div>
+
+            <!-- PayMaya (Mode2) -->
+            <div>
+                <form class="mode2" action="{% url 'paymaya-mode' %}" method="POST">
+                    {% csrf_token %}
+                    <h1>PayMaya Details</h1>
+                    <input type="hidden" value="mode2" name="mode_type">
+                    <input class="title" name="title" type="hidden" value="">
+                    <input name="name" type="text" placeholder="Enter Name">
+                    <input name="paymaya_number" type="text" placeholder="Enter PayMaya Number">
+                    <input name="amount" type="text" placeholder="Enter Amount">
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            <!-- Credit Card (Mode3) -->
+            <div>
+                <form class="mode3" action="{% url 'volunteer-mode' %}" method="POST">
+                    {% csrf_token %}
+                    <h1>Volunteer Details</h1>
+                    <input class="title" name="title" type="hidden" value="">
+                    <input type="hidden" name="amount" type="text" value="0">
+                    <input name="name" type="text" placeholder="Enter Name">
+                    <input name="contact_number" type="number" placeholder="Enter Phone Number">
+                    <input name="address_volunteer" type="text" placeholder="Enter Address">
+                    <input name="date_sched" style="font-size: 20px;" type="text"
+                        placeholder="Schedule for Volunteering (6/4/2024)">
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</div>
